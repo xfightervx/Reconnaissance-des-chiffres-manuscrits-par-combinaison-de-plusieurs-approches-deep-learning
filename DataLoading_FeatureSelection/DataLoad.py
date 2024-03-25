@@ -5,6 +5,7 @@ from os.path  import join
 import pandas as pd
 import random
 import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
 
 
 class MnistDataloader(object):
@@ -80,3 +81,12 @@ def load_it():
 def np_data_loader():
     x_train, y_train, x_test, y_test = load_it()
     return np.array(x_train), np.array(y_train), np.array(x_test), np.array(y_test)
+
+def data_std_reshaped_loader():
+    x_train, y_train, x_test, y_test = np_data_loader()
+    x_train = x_train.reshape(x_train.shape[0],-1)
+    x_test = x_test.reshape(x_test.shape[0], -1)
+    scaler = StandardScaler()
+    x_train_std = scaler.fit_transform(x_train)
+    x_test_std = scaler.transform(x_test)
+    return x_train_std, y_train, x_test_std, y_test
