@@ -77,3 +77,6 @@ def load_it():
     (x_train, y_train), (x_test, y_test) = mnist_dataloader.load_data()
     return x_train, y_train, x_test, y_test
 
+def np_data_loader():
+    x_train, y_train, x_test, y_test = load_it()
+    return np.array(x_train), np.array(y_train), np.array(x_test), np.array(y_test)
