@@ -3,7 +3,7 @@ import struct
 from array import array
 from os.path  import join
 import pandas as pd
-import random
+import joblib
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 
@@ -89,4 +89,6 @@ def data_std_reshaped_loader():
     scaler = StandardScaler()
     x_train_std = scaler.fit_transform(x_train)
     x_test_std = scaler.transform(x_test)
+    joblib.dump(scaler, 'scaler.pkl')
     return x_train_std, y_train, x_test_std, y_test
+
