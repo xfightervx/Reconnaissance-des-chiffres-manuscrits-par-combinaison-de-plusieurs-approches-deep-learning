@@ -92,3 +92,9 @@ def data_std_reshaped_loader():
     joblib.dump(scaler, 'scaler.pkl')
     return x_train_std, y_train, x_test_std, y_test
 
+def data_rounded():
+    x_train_std, y_train, x_test_std, y_test = data_std_reshaped_loader()
+    x_train_std = np.round(x_train_std, 0)
+    x_test_std = np.round(x_test_std, 0 )
+    return np.array(x_train_std), np.array(y_train), np.array(x_test_std), np.array(y_test)
+
